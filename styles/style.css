@@ -1,11 +1,13 @@
 .box {
   width: 8rem;
   height: 8rem;
-  background-color: rgb(240, 112, 112);
+  background-color: #ffffc7;
   font-size: 5rem;
   font-weight: 600;
   text-align: center;
   align-items: center;
-  border: 2px solid blue;
-  color: aliceblue;
+  /* border: 2px solid blue; */
+  color: #b0413e;
+  border-radius: 1rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
 }
