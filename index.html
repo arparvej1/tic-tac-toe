@@ -20,18 +20,25 @@
   <main>
     <h3 class="text-center font-bold text-3xl p-5">Tic Tac Toe</h3>
     <div class="flex justify-center">
-      <ul class="grid grid-cols-3 gap-4 text-center">
-        <li id="b1" class="box"></li>
-        <li id="b2" class="box"></li>
-        <li id="b3" class="box"></li>
-        <li id="b4" class="box"></li>
-        <li id="b5" class="box"></li>
-        <li id="b6" class="box"></li>
-        <li id="b7" class="box"></li>
-        <li id="b8" class="box"></li>
-        <li id="b9" class="box"></li>
-      </ul>
+      <div class="grid grid-cols-3 gap-4 text-center">
+        <button id="b0" class="box"></button>
+        <button id="b1" class="box"></button>
+        <button id="b2" class="box"></button>
+        <button id="b3" class="box"></button>
+        <button id="b4" class="box"></button>
+        <button id="b5" class="box"></button>
+        <button id="b6" class="box"></button>
+        <button id="b7" class="box"></button>
+        <button id="b8" class="box"></button>
+      </div>
     </div>
+    <div>
+      <h3 id="winner" class="text-center font-bold text-3xl pt-8"></h3>
+    </div>
+    <div class="flex justify-center mt-10">
+      <button id="reset-game" class="btn font-bold text-3xl">Reset Game</button>
+    </div>
+    
   </main>
   <footer>
     <script src="js/app.js"></script>
