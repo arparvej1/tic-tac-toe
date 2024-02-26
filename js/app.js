@@ -20,7 +20,7 @@ for (const box of allBox) {
     e.target.innerText = 'X'; // '✕'
     e.target.disabled = true;
     nineBox = nineBox.filter(remove => remove !== e.target.id);
-    checkWinner();
+    checkWinner('you');
     gameOn === 1 ? (nineBox.length > 0 ? setTimeout(compTurn, 100) : null) : null;
   })
 };
@@ -49,7 +49,7 @@ function enabledAllBox() {
   }
 }
 
-function checkWinner() {
+function checkWinner(win='computer') {
   console.log("Check starting");
   for (const pattern of winPatterns) {
     let pos1Val = allBox[pattern[0]].innerText;
@@ -59,7 +59,7 @@ function checkWinner() {
     if (pos1Val != "" && pos2Val != "" && pos3Val != "") {
       if (pos1Val === pos2Val && pos1Val === pos3Val) {
         console.log("Winner", pos1Val);
-        winner.innerText = "Winner "+ pos1Val;
+        winner.innerText = "Winner "+ win +".";
         gameOn = 0;
         disabledAllBox();
       }
@@ -71,6 +71,7 @@ function resetGame() {
   enabledAllBox();
   gameOn = 1;
   nineBox = ['b0', 'b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'b7', 'b8'];
+  winner.innerText = '';
 }
 
 document.getElementById('reset-game').addEventListener('click', resetGame);
