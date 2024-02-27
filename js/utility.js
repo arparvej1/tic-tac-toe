@@ -42,7 +42,7 @@ function showGameMode() {
 
 }
 
-function checkWinner(win = 'computer') {
+function checkWinner(win) {
   console.log("Check starting", win);
   for (const pattern of winPatterns) {
     let pos1Val = allBox[pattern[0]].innerText;
@@ -52,9 +52,10 @@ function checkWinner(win = 'computer') {
     if (pos1Val != "" && pos2Val != "" && pos3Val != "") {
       if (pos1Val === pos2Val && pos1Val === pos3Val) {
         console.log("Winner", pos1Val);
-        winner.innerText = "Winner " + win + ".";
+        winner.innerText = `Winner ${win}.`;
         gameOn = 0;
         disabledAllBox();
+        // break;
       } else if (nineBox.length == 0) {
         winner.innerText = "Game Draw.";
       }
@@ -67,6 +68,11 @@ function compMediumPlay() { // computer play medium mode
   if (allBox[4].innerText == "") {
     const ccc = nineBox.findIndex((element) => element == allBox[4].id);
     i = ccc;
+  } else if (allBox[4].innerText == "X" && allBox[8].innerText == "X") {
+    const ccc = nineBox.findIndex((element) => element == allBox[2].id);
+    if (ccc > -1) {
+      i = ccc;
+    }
   }
   // ----------------
   for (const pattern of winPatterns) {
@@ -100,10 +106,6 @@ function compMediumPlay() { // computer play medium mode
 
 function compHardPlay() { // computer play hard mode
   let i = 0;
-  if (allBox[4].innerText == "") {
-    const ccc = nineBox.findIndex((element) => element == allBox[4].id);
-    i = ccc;
-  }
   // ----------------
   for (const pattern of winPatterns) {
     let val1 = allBox[pattern[0]].innerText;
@@ -132,7 +134,6 @@ function compHardPlay() { // computer play hard mode
       i = undefined;
     }
   }
-  console.log(i);
   // -----------
   if (i === undefined) {
     compMediumPlay();
@@ -155,8 +156,7 @@ function compTurn() {
 function compTurnClick(index) {
   const comID = document.getElementById(nineBox[index]);
   comID.innerText = 'O';
-  console.log("Computer Click", index);
   comID.disabled = true;
   nineBox = nineBox.filter(remove => remove !== nineBox[index]);
-  checkWinner();
+  checkWinner('Computer', );
 }

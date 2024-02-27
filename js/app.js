@@ -36,7 +36,7 @@ for (const box of allBox) {
     disabledGameMode();
     nineBox = nineBox.filter(remove => remove !== e.target.id);
     checkWinner('you');
-    nineBox.length > 0 ? setTimeout(compTurn, 90) : null;
+    gameOn === 1 ? (nineBox.length > 0 ? setTimeout(compTurn, 100) : null) : null;
   })
 };
 
