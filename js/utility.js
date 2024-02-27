@@ -43,7 +43,6 @@ function showGameMode() {
 }
 
 function checkWinner(win) {
-  console.log("Check starting", win);
   for (const pattern of winPatterns) {
     let pos1Val = allBox[pattern[0]].innerText;
     let pos2Val = allBox[pattern[1]].innerText;
@@ -51,11 +50,10 @@ function checkWinner(win) {
 
     if (pos1Val != "" && pos2Val != "" && pos3Val != "") {
       if (pos1Val === pos2Val && pos1Val === pos3Val) {
-        console.log("Winner", pos1Val);
         winner.innerText = `Winner ${win}.`;
         gameOn = 0;
         disabledAllBox();
-        // break;
+        break;
       } else if (nineBox.length == 0) {
         winner.innerText = "Game Draw.";
       }
@@ -135,6 +133,11 @@ function compHardPlay() { // computer play hard mode
     }
   }
   // -----------
+  if (allBox[5].innerText == "X" && allBox[7].innerText == "X" && allBox[8].innerText == "") {
+    const ccc = nineBox.findIndex((element) => element == allBox[8].id);
+    i = ccc;
+  }
+
   if (i === undefined) {
     compMediumPlay();
   } else {
@@ -158,5 +161,5 @@ function compTurnClick(index) {
   comID.innerText = 'O';
   comID.disabled = true;
   nineBox = nineBox.filter(remove => remove !== nineBox[index]);
-  checkWinner('Computer', );
+  checkWinner('Computer',);
 }
