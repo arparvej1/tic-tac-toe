@@ -9,6 +9,7 @@
   <!-- Tailwind & daisyUI -->
   <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- My Styles -->
   <link rel="stylesheet" href="styles/style.css">
 
 </head>
@@ -17,16 +18,29 @@
   <header>
   </header>
   <main>
-    <h3 class="text-center font-bold text-3xl p-5">Tic Tac Toe</h3>
-    <div>
-      <form>
+    <h3 class="text-center font-bold text-4xl pt-5">Tic Tac Toe</h3>
+    <div class="pb-2">
+      <form class="flex justify-center gap-3 my-2">
+        <p>Play with: </p>
+        <label for="playWithComp">
+          <input type="radio" id="playWithComp" name="gamePlayer" value="playWithComp" checked>
+          Computer</label>
+        <label for="playWithFriend">
+          <input type="radio" id="playWithFriend" name="gamePlayer" value="playWithFriend" >
+          Friend</label>
+      </form>
+      <hr class="w-[50%] mx-auto">
+      <form class="flex justify-center gap-3 my-2">
         <p>Game Mode: </p>
-        <input type="radio" id="gameModeEasy" name="gameMode" value="gameModeEasy" >
-        <label for="gameModeEasy">Easy</label>
-        <input type="radio" id="gameModeMedium" name="gameMode" value="gameModeMedium" checked>
-        <label for="gameModeMedium">Medium</label>
-        <input type="radio" id="gameModeHard" name="gameMode" value="gameModeHard">
-        <label for="gameModeHard">Hard</label>
+        <label for="gameModeEasy">
+          <input type="radio" id="gameModeEasy" name="gameMode" value="gameModeEasy">
+          Easy</label>
+        <label for="gameModeMedium">
+          <input type="radio" id="gameModeMedium" name="gameMode" value="gameModeMedium" checked>
+          Medium</label>
+        <label for="gameModeHard">
+          <input type="radio" id="gameModeHard" name="gameMode" value="gameModeHard">
+          Hard</label>
       </form>
     </div>
     <div class="flex justify-center">
@@ -43,15 +57,16 @@
       </div>
     </div>
     <div>
-      <h3 id="winner" class="text-center font-bold text-3xl pt-8"></h3>
+      <h3 id="winner" class="text-center font-bold text-3xl pt-6"></h3>
     </div>
-    <div class="flex justify-center mt-10">
-      <button id="reset-game" class="btn font-bold text-3xl">Reset Game</button>
+    <div class="flex justify-center mt-6">
+      <button id="reset-game" class="btn font-bold text-2xl">Reset Game</button>
     </div>
 
   </main>
   <footer>
   </footer>
+  <script src="js/utility.js"></script>
   <script src="js/app.js"></script>
 </body>
 

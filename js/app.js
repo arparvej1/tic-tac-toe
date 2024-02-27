@@ -2,7 +2,15 @@ const allBox = document.getElementsByClassName('box');
 const winner = document.getElementById('winner');
 let nineBox = ['b0', 'b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'b7', 'b8'];
 let gameOn = 1;
-let gameMode = 1; // 0=easy, 1=medium/hard
+
+let gameMode = 1; // 0=easy, 1=medium 2=hard
+const gameEasy = document.getElementById('gameModeEasy');
+const gameMedium = document.getElementById('gameModeMedium');
+const gameHard = document.getElementById('gameModeHard');
+gameEasy.addEventListener('click', function () { gameMode = 0 });
+gameMedium.addEventListener('click', function () { gameMode = 1 });
+gameHard.addEventListener('click', function () { gameMode = 2 });
+
 
 const winPatterns = [
   [0, 1, 2],
@@ -17,8 +25,9 @@ const winPatterns = [
 
 for (const box of allBox) {
   box.addEventListener('click', function (e) {
-    e.target.innerText = 'X'; // '✕'
+    e.target.innerText = 'X';
     e.target.disabled = true;
+    disabledGameMode();
     nineBox = nineBox.filter(remove => remove !== e.target.id);
     checkWinner('you');
     gameOn === 1 ? (nineBox.length > 0 ? setTimeout(compTurn, 100) : null) : null;
@@ -91,6 +100,18 @@ function enabledAllBox() {
   }
 }
 
+function disabledGameMode() {
+  gameEasy.disabled = true;
+  gameMedium.disabled = true;
+  gameHard.disabled = true;
+}
+
+function enabledGameMode() {
+  gameEasy.disabled = false;
+  gameMedium.disabled = false;
+  gameHard.disabled = false;
+}
+
 function checkWinner(win = 'computer') {
   console.log("Check starting");
   for (const pattern of winPatterns) {
@@ -104,6 +125,8 @@ function checkWinner(win = 'computer') {
         winner.innerText = "Winner " + win + ".";
         gameOn = 0;
         disabledAllBox();
+      } else if (nineBox.length == 0) {
+        winner.innerText = "Game Draw.";
       }
     }
   }
@@ -111,6 +134,7 @@ function checkWinner(win = 'computer') {
 
 function resetGame() {
   enabledAllBox();
+  enabledGameMode();
   gameOn = 1;
   nineBox = ['b0', 'b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'b7', 'b8'];
   winner.innerText = '';
