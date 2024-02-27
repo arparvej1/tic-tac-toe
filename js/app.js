@@ -34,6 +34,7 @@ const winPatterns = [
 
 for (const box of allBox) {
   box.addEventListener('click', function (e) {
+    disabledGameMode();
     if (playTwoPlayer === 1) {
       withTwoFriends(e);
     } else {
@@ -58,7 +59,6 @@ function withTwoFriends(e) {
 function withCompPlay(e) {
   e.target.innerText = 'X';
   e.target.disabled = true;
-  disabledGameMode();
   nineBox = nineBox.filter(remove => remove !== e.target.id);
   checkWinner('you');
   gameOn === 1 ? (nineBox.length > 0 ? setTimeout(compTurn, 100) : null) : null;
