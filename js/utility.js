@@ -17,6 +17,7 @@ function disabledGameMode() {
   gameHard.disabled = true;
   playWithFriend.disabled = true;
   playWithComp.disabled = true;
+  playFirstComputer.classList.add('hidden');
 }
 
 function enabledGameMode() {
@@ -32,6 +33,7 @@ function hideGameMode() {
   formDivider.classList.add('hidden');
   playWithFriend.parentNode.classList.add('playWithActive');
   playWithComp.parentNode.classList.remove('playWithActive');
+  playFirstComputer.classList.add('hidden');
   playTwoPlayer = 1;
 }
 
@@ -40,6 +42,7 @@ function showGameMode() {
   formDivider.classList.remove('hidden');
   playWithFriend.parentNode.classList.remove('playWithActive');
   playWithComp.parentNode.classList.add('playWithActive');
+  playFirstComputer.classList.remove('hidden');
   playTwoPlayer = 0;
 }
 
@@ -170,4 +173,10 @@ function compTurnClick(index) {
   comID.disabled = true;
   nineBox = nineBox.filter(remove => remove !== nineBox[index]);
   checkWinner('Computer',);
+}
+
+function playFirstComp(){
+  compTurn();
+  console.log(playFirstComputer);
+  playFirstComputer.classList.add('hidden');
 }

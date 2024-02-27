@@ -10,7 +10,7 @@ const gameHard = document.getElementById('gameModeHard');
 gameEasy.addEventListener('click', function () { gameMode = 0; addGameModeBgClass(gameEasy); });
 gameMedium.addEventListener('click', function () { gameMode = 1; addGameModeBgClass(gameMedium); });
 gameHard.addEventListener('click', function () { gameMode = 2; addGameModeBgClass(gameHard); });
-
+const playFirstComputer = document.getElementById('playFirstComp');
 
 const gameModeForm = document.getElementById('gameModeForm');
 const formDivider = document.getElementById('formDivider');
@@ -70,6 +70,7 @@ function resetGame() {
   gameOn = 1;
   nineBox = ['b0', 'b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'b7', 'b8'];
   winner.innerText = '';
+  playFirstComputer.classList.remove('hidden');
 }
 
 document.getElementById('reset-game').addEventListener('click', resetGame);
