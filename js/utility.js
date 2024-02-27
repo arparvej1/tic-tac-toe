@@ -39,11 +39,11 @@ function showGameMode() {
   formDivider.classList.remove('hidden');
   playWithFriend.parentNode.classList.remove('playWithActive');
   playWithComp.parentNode.classList.add('playWithActive');
-  
+
 }
 
 function checkWinner(win = 'computer') {
-  console.log("Check starting");
+  console.log("Check starting", win);
   for (const pattern of winPatterns) {
     let pos1Val = allBox[pattern[0]].innerText;
     let pos2Val = allBox[pattern[1]].innerText;
@@ -98,7 +98,7 @@ function compMediumPlay() { // computer play medium mode
   compTurnClick(i);
 }
 
-function compHardPlay() {  // computer play hard mode
+function compHardPlay() { // computer play hard mode
   let i = 0;
   if (allBox[4].innerText == "") {
     const ccc = nineBox.findIndex((element) => element == allBox[4].id);
@@ -110,28 +110,35 @@ function compHardPlay() {  // computer play hard mode
     let val2 = allBox[pattern[1]].innerText;
     let val3 = allBox[pattern[2]].innerText;
 
-    if (val1 == "X" && val2 == "X") {
+    if (val1 == "O" && val2 == "O") {
       if (val3 == "") {
         const found = nineBox.findIndex((element) => element == allBox[pattern[2]].id);
         i = found;
         break;
       }
-    } else if (val2 == "X" && val3 == "X") {
+    } else if (val2 == "O" && val3 == "O") {
       if (val1 == "") {
         const found = nineBox.findIndex((element) => element == allBox[pattern[0]].id);
         i = found;
         break;
       }
-    } else if (val1 == "X" && val3 == "X") {
+    } else if (val1 == "O" && val3 == "O") {
       if (val2 == "") {
         const found = nineBox.findIndex((element) => element == allBox[pattern[1]].id);
         i = found;
         break;
       }
+    } else {
+      i = undefined;
     }
   }
+  console.log(i);
   // -----------
-  compTurnClick(i);
+  if (i === undefined) {
+    compMediumPlay();
+  } else {
+    compTurnClick(i);
+  }
 }
 
 function compTurn() {
@@ -148,6 +155,7 @@ function compTurn() {
 function compTurnClick(index) {
   const comID = document.getElementById(nineBox[index]);
   comID.innerText = 'O';
+  console.log("Computer Click", index);
   comID.disabled = true;
   nineBox = nineBox.filter(remove => remove !== nineBox[index]);
   checkWinner();
