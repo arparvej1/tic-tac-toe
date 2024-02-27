@@ -7,14 +7,17 @@ let gameMode = 1; // 0=easy, 1=medium 2=hard
 const gameEasy = document.getElementById('gameModeEasy');
 const gameMedium = document.getElementById('gameModeMedium');
 const gameHard = document.getElementById('gameModeHard');
-gameEasy.addEventListener('click', function () { gameMode = 0 });
-gameMedium.addEventListener('click', function () { gameMode = 1 });
-gameHard.addEventListener('click', function () { gameMode = 2 });
+gameEasy.addEventListener('click', function () { gameMode = 0; addGameModeBgClass(gameEasy); });
+gameMedium.addEventListener('click', function () { gameMode = 1; addGameModeBgClass(gameMedium); });
+gameHard.addEventListener('click', function () { gameMode = 2; addGameModeBgClass(gameHard); });
+
 
 const gameModeForm = document.getElementById('gameModeForm');
 const formDivider = document.getElementById('formDivider');
 const playWithComp = document.getElementById('playWithComp');
 const playWithFriend = document.getElementById('playWithFriend');
+let playTwoPlayer = 0;
+let turnO = false;
 playWithComp.addEventListener('click', function () { showGameMode() });
 playWithFriend.addEventListener('click', function () { hideGameMode() });
 
@@ -31,14 +34,35 @@ const winPatterns = [
 
 for (const box of allBox) {
   box.addEventListener('click', function (e) {
-    e.target.innerText = 'X';
-    e.target.disabled = true;
-    disabledGameMode();
-    nineBox = nineBox.filter(remove => remove !== e.target.id);
-    checkWinner('you');
-    gameOn === 1 ? (nineBox.length > 0 ? setTimeout(compTurn, 100) : null) : null;
+    if (playTwoPlayer === 1) {
+      withTwoFriends(e);
+    } else {
+      withCompPlay(e);
+    }
   })
 };
+
+function withTwoFriends(e) {
+  if (turnO) { //playerO
+    e.target.innerText = "O";
+    turnO = false;
+  } else { //playerX
+    e.target.innerText = "X";
+    turnO = true;
+  }
+  e.target.disabled = true;
+  nineBox = nineBox.filter(remove => remove !== e.target.id);
+  checkWinner(turnO ? 'X' : 'O');
+}
+
+function withCompPlay(e) {
+  e.target.innerText = 'X';
+  e.target.disabled = true;
+  disabledGameMode();
+  nineBox = nineBox.filter(remove => remove !== e.target.id);
+  checkWinner('you');
+  gameOn === 1 ? (nineBox.length > 0 ? setTimeout(compTurn, 100) : null) : null;
+}
 
 function resetGame() {
   enabledAllBox();

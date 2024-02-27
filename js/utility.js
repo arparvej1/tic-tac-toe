@@ -32,6 +32,7 @@ function hideGameMode() {
   formDivider.classList.add('hidden');
   playWithFriend.parentNode.classList.add('playWithActive');
   playWithComp.parentNode.classList.remove('playWithActive');
+  playTwoPlayer = 1;
 }
 
 function showGameMode() {
@@ -39,7 +40,14 @@ function showGameMode() {
   formDivider.classList.remove('hidden');
   playWithFriend.parentNode.classList.remove('playWithActive');
   playWithComp.parentNode.classList.add('playWithActive');
+  playTwoPlayer = 0;
+}
 
+function addGameModeBgClass(mode) {
+  gameEasy.parentNode.classList.remove('playWithActive');
+  gameMedium.parentNode.classList.remove('playWithActive');
+  gameHard.parentNode.classList.remove('playWithActive');
+  mode.parentNode.classList.add('playWithActive');
 }
 
 function checkWinner(win) {
