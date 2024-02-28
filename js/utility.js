@@ -115,25 +115,25 @@ function compMediumPlay() { // computer play medium mode
 
 function compHardPlay() { // computer play hard mode
   let i = 0;
-  // ----------------
-  for (const pattern of winPatterns) {
+  // -----------
+  for (const pattern of hardPatterns) {
     let val1 = allBox[pattern[0]].innerText;
     let val2 = allBox[pattern[1]].innerText;
     let val3 = allBox[pattern[2]].innerText;
 
-    if (val1 == "O" && val2 == "O") {
+    if (val1 == "X" && val2 == "X") {
       if (val3 == "") {
         const found = nineBox.findIndex((element) => element == allBox[pattern[2]].id);
         i = found;
         break;
       }
-    } else if (val2 == "O" && val3 == "O") {
+    } else if (val2 == "X" && val3 == "X") {
       if (val1 == "") {
         const found = nineBox.findIndex((element) => element == allBox[pattern[0]].id);
         i = found;
         break;
       }
-    } else if (val1 == "O" && val3 == "O") {
+    } else if (val1 == "X" && val3 == "X") {
       if (val2 == "") {
         const found = nineBox.findIndex((element) => element == allBox[pattern[1]].id);
         i = found;
@@ -143,11 +143,68 @@ function compHardPlay() { // computer play hard mode
       i = undefined;
     }
   }
-  // -----------
-  if (allBox[5].innerText == "X" && allBox[7].innerText == "X" && allBox[8].innerText == "") {
-    const ccc = nineBox.findIndex((element) => element == allBox[8].id);
-    i = ccc;
+  // ----------------
+  for (const pattern of winPatterns) {
+    let val1 = allBox[pattern[0]].innerText;
+    let val2 = allBox[pattern[1]].innerText;
+    let val3 = allBox[pattern[2]].innerText;
+
+    if (val1 == val2 && val1 != "") {
+      if (val3 == "") {
+        const found = nineBox.findIndex((element) => element == allBox[pattern[2]].id);
+        i = found;
+        break;
+      }
+    } else if (val2 == val3 && val2 != "") {
+      if (val1 == "") {
+        const found = nineBox.findIndex((element) => element == allBox[pattern[0]].id);
+        i = found;
+        break;
+      }
+    } else if (val1 == val3 && val1 != "") {
+      if (val2 == "") {
+        const found = nineBox.findIndex((element) => element == allBox[pattern[1]].id);
+        i = found;
+        break;
+      }
+    }
+
+    // // -----111
+    // if (val1 == "O" && val2 == "O") {
+    //   if (val3 == "") {
+    //     const found = nineBox.findIndex((element) => element == allBox[pattern[2]].id);
+    //     i = found;
+    //     break;
+    //   }
+    // } else if (val2 == "O" && val3 == "O") {
+    //   if (val1 == "") {
+    //     const found = nineBox.findIndex((element) => element == allBox[pattern[0]].id);
+    //     i = found;
+    //     break;
+    //   }
+    // } else if (val1 == "O" && val3 == "O") {
+    //   if (val2 == "") {
+    //     const found = nineBox.findIndex((element) => element == allBox[pattern[1]].id);
+    //     i = found;
+    //     break;
+    //   }
+    // }
+    // // -----111
   }
+  // -----------
+
+  // if (allBox[5].innerText == "X" && allBox[7].innerText == "X" && allBox[8].innerText == "") {
+  //   const ccc = nineBox.findIndex((element) => element == allBox[8].id);
+  //   i = ccc;
+  // } else if (allBox[7].innerText == "X") {
+  //   if (allBox[0].innerText == "X" && allBox[6].innerText == "") {
+  //     const ccc = nineBox.findIndex((element) => element == allBox[6].id);
+  //     i = ccc;
+  //   } else if (allBox[2].innerText == "X" && allBox[8].innerText == "") {
+  //     const ccc = nineBox.findIndex((element) => element == allBox[8].id);
+  //     i = ccc;
+  //   }
+  // }
 
   if (i === undefined) {
     compMediumPlay();
@@ -175,8 +232,7 @@ function compTurnClick(index) {
   checkWinner('Computer',);
 }
 
-function playFirstComp(){
+function playFirstComp() {
   compTurn();
-  console.log(playFirstComputer);
   playFirstComputer.classList.add('hidden');
 }

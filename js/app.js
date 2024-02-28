@@ -32,6 +32,25 @@ const winPatterns = [
   [6, 7, 8]
 ];
 
+const hardPatterns = [
+  [0, 2, 1],
+  [0, 6, 3],
+  [6, 8, 7],
+  [2, 8, 5],
+  [1, 3, 0],
+  [1, 5, 2],
+  [3, 7, 6],
+  [5, 7, 8],
+  [0, 7, 6],
+  [2, 7, 8],
+  [0, 5, 2],
+  [6, 5, 8],
+  [6, 1, 0],
+  [8, 1, 2],
+  [2, 3, 0],
+  [8, 3, 6]
+];
+
 for (const box of allBox) {
   box.addEventListener('click', function (e) {
     disabledGameMode();
@@ -70,7 +89,7 @@ function resetGame() {
   gameOn = 1;
   nineBox = ['b0', 'b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'b7', 'b8'];
   winner.innerText = '';
-  playFirstComputer.classList.remove('hidden');
+  playTwoPlayer == 0 ? playFirstComputer.classList.remove('hidden') : null;
 }
 
 document.getElementById('reset-game').addEventListener('click', resetGame);
