@@ -168,43 +168,8 @@ function compHardPlay() { // computer play hard mode
         break;
       }
     }
-
-    // // -----111
-    // if (val1 == "O" && val2 == "O") {
-    //   if (val3 == "") {
-    //     const found = nineBox.findIndex((element) => element == allBox[pattern[2]].id);
-    //     i = found;
-    //     break;
-    //   }
-    // } else if (val2 == "O" && val3 == "O") {
-    //   if (val1 == "") {
-    //     const found = nineBox.findIndex((element) => element == allBox[pattern[0]].id);
-    //     i = found;
-    //     break;
-    //   }
-    // } else if (val1 == "O" && val3 == "O") {
-    //   if (val2 == "") {
-    //     const found = nineBox.findIndex((element) => element == allBox[pattern[1]].id);
-    //     i = found;
-    //     break;
-    //   }
-    // }
-    // // -----111
   }
   // -----------
-
-  // if (allBox[5].innerText == "X" && allBox[7].innerText == "X" && allBox[8].innerText == "") {
-  //   const ccc = nineBox.findIndex((element) => element == allBox[8].id);
-  //   i = ccc;
-  // } else if (allBox[7].innerText == "X") {
-  //   if (allBox[0].innerText == "X" && allBox[6].innerText == "") {
-  //     const ccc = nineBox.findIndex((element) => element == allBox[6].id);
-  //     i = ccc;
-  //   } else if (allBox[2].innerText == "X" && allBox[8].innerText == "") {
-  //     const ccc = nineBox.findIndex((element) => element == allBox[8].id);
-  //     i = ccc;
-  //   }
-  // }
 
   if (i === undefined) {
     compMediumPlay();
