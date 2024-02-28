@@ -143,31 +143,68 @@ function compHardPlay() { // computer play hard mode
     }
   }
   // ----------------
+  let winPatternsCount = 0;
+
   for (const pattern of winPatterns) {
     let val1 = allBox[pattern[0]].innerText;
     let val2 = allBox[pattern[1]].innerText;
     let val3 = allBox[pattern[2]].innerText;
-
-    if (val1 == val2 && val1 != "") {
+    
+    if (val1 == val2 && val1 == 'O') {
       if (val3 == "") {
         const found = nineBox.findIndex((element) => element == allBox[pattern[2]].id);
         i = found;
+        winPatternsCount++;
         break;
       }
-    } else if (val2 == val3 && val2 != "") {
+    } else if (val2 == val3 && val2 == 'O') {
       if (val1 == "") {
         const found = nineBox.findIndex((element) => element == allBox[pattern[0]].id);
         i = found;
+        winPatternsCount++;
         break;
       }
-    } else if (val1 == val3 && val1 != "") {
+    } else if (val1 == val3 && val1 == 'O') {
       if (val2 == "") {
         const found = nineBox.findIndex((element) => element == allBox[pattern[1]].id);
         i = found;
+        winPatternsCount++;
         break;
       }
     }
   }
+
+  if (winPatternsCount == 0) {
+    for (const pattern of winPatterns) {
+      let val1 = allBox[pattern[0]].innerText;
+      let val2 = allBox[pattern[1]].innerText;
+      let val3 = allBox[pattern[2]].innerText;
+      
+      if (val1 == val2 && val1 == 'X') {
+        if (val3 == "") {
+          const found = nineBox.findIndex((element) => element == allBox[pattern[2]].id);
+          i = found;
+          winPatternsCount++;
+          break;
+        }
+      } else if (val2 == val3 && val2 == 'X') {
+        if (val1 == "") {
+          const found = nineBox.findIndex((element) => element == allBox[pattern[0]].id);
+          i = found;
+          winPatternsCount++;
+          break;
+        }
+      } else if (val1 == val3 && val1 == 'X') {
+        if (val2 == "") {
+          const found = nineBox.findIndex((element) => element == allBox[pattern[1]].id);
+          i = found;
+          winPatternsCount++;
+          break;
+        }
+      }
+    }
+  }
+
   // -----------
 
   if (i === undefined) {
