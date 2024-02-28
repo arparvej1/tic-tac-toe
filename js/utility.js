@@ -120,7 +120,6 @@ function compHardPlay() { // computer play hard mode
     let val1 = allBox[pattern[0]].innerText;
     let val2 = allBox[pattern[1]].innerText;
     let val3 = allBox[pattern[2]].innerText;
-
     if (val1 == "X" && val2 == "X") {
       if (val3 == "") {
         const found = nineBox.findIndex((element) => element == allBox[pattern[2]].id);

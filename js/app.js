@@ -33,6 +33,8 @@ const winPatterns = [
 ];
 
 const hardPatterns = [
+  [0, 8, 1],
+  [2, 6, 1],
   [1, 3, 0],
   [1, 5, 2],
   [3, 7, 6],
